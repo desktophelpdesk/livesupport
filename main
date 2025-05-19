@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auto Fullscreen Demo</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    #popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+<div id="popup">
+  <button onclick="goFullscreen()">Click to Enter</button>
+</div>
+
+<script>
+function goFullscreen() {
+  let elem = document.documentElement; // full page
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { // Safari
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { // IE11
+    elem.msRequestFullscreen();
+  }
+
+  document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>
